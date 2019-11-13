@@ -54,12 +54,11 @@ class InteractiveRecord
     DB[:conn].execute(sql, name)
   end
 
-  def self.find_by(attribute)
-    student = []
+  def self.find_by(attribute={})
     attribute.each do |key, value|
-      sql = "SELECT * FROM #{self.table_name} WHERE #{key} = '#{value}'"
-      student = DB[:conn].execute(sql)
+      sql = "SELECT * FROM #{self.table_name} WHERE #{key} = ?"
+      binding.pry
+      return DB[:conn].execute(sql, value)
     end
-    student
   end
 end
