@@ -5,7 +5,7 @@ require 'pry'
 class InteractiveRecord
   # Create a downcased, plural table name based on the Class name
   def self.table_name
-    # Takes the name of class, ref by the `self` keyword, turns it into a str `#to_s`
+    # Takes class name, ref by the self keyword, turns it into a str #to_s
     # Downcases the string and then "pluralizes" it, or makes it plural
     self.to_s.downcase.pluralize 
   end
@@ -55,7 +55,7 @@ class InteractiveRecord
        # push return value of invoking a method via the #send, unless value is nil (id before saved)
        # each ind. value enclosed in single ' ' inside string
       values << "'#{send(col_name)}'" unless send(col_name).nil?
-      binding.pry
+
     end
     values.join(", ") #return value wrapped in string => "'Sam', '11'"
   end
